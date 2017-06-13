@@ -1,0 +1,63 @@
+body {
+  background: #262626;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.maps {
+  display: flex;
+}
+.map {
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.territory {
+  fill: transparent;
+  stroke: black;
+  stroke-width: 2px;
+  cursor: pointer;
+}
+.territory.white { fill: rgba(255, 255, 255, 0.7); }
+.territory.yellow { fill: rgba(255, 255, 0, 0.7); }
+.territory.black { fill: rgba(0, 0, 0, 0.85); }
+.territory.green { fill: rgba(0, 255, 0, 0.7); }
+.territory.orange { fill: rgba(255, 127, 0, 0.7); }
+.territory.red { fill: rgba(255, 0, 0, 0.7); }
+.territory.blue { fill: rgba(0, 0, 255, 0.7); }
+
+.players {
+  display: flex;
+  flex-wrap: wrap;
+}
+.player.format-mini {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 70px;
+  margin-top: 5px;
+  margin-left: 5px;
+  box-sizing: border-box;
+  background: #999;
+  color: black;
+  border-radius: 4px;
+}
+.player.format-mini.selected {
+  border: 2px solid #ff9233;
+}
+.player.format-mini > .logo {
+  flex: 0 0 auto;
+}
+.player.format-mini > .column {
+  flex: 1;
+}
+.player.format-mini > .column > .metric {
+  display: flex;
+}
+.player.format-mini > .column > .metric > .label {
+  font-weight: bold;
+  width: 50%;
+}
+.player.format-mini > .column > .metric > .value {
+  width: 50%;
+}

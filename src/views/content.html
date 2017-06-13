@@ -1,0 +1,58 @@
+<div class="players">
+    <div *ngFor="let player of players"
+         class="player format-mini" [ngClass]="{selected: player==currentPlayer}"
+         (click)="makeCurrent(player)">
+
+        <div class="logo">
+            <img src="../assets/{{ player.name }}.png" />
+        </div>
+
+        <div class="column">
+            <div class="metric">
+                <div class="label"><img src="../assets/land.png" /></div>
+                <div class="value">{{ countLands(player) }}</div>
+            </div>
+
+            <div class="metric">
+                <div class="label"><img src="../assets/castle.png" /></div>
+                <div class="value">{{ countCastles(player) }}</div>
+            </div>
+
+            <div class="metric">
+                <div class="label"><img src="../assets/harbor.png" /></div>
+                <div class="value">{{ countHarbors(player) }}</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="metric">
+                <div class="label"><img src="../assets/soldier.png" /></div>
+                <div class="value">{{ getReinforcement(player) }}</div>
+            </div>
+
+            <div class="metric">
+                <div class="label"><img src="../assets/gold.png" /></div>
+                <div class="value">{{ getIncome(player) }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maps">
+    <svg class="map" width="500" height="744" style="background: url('../assets/westeros.jpg')" xmlns="http://www.w3.org/2000/svg">
+        <polygon *ngFor="let land of getContinent('westeros')"
+                 id="{{ land.id }}"
+                 class="territory" [ngClass]="land.getOwnerClass()"
+                 [attr.points]="land.coords"
+                 (click)="takeLand(land)">
+        </polygon>
+    </svg>
+
+    <svg class="map" width="750" height="504" style="background: url('../assets/essos.jpg')" xmlns="http://www.w3.org/2000/svg">
+        <polygon *ngFor="let land of getContinent('essos')"
+                 id="{{ land.id }}"
+                 class="territory" [ngClass]="land.getOwnerClass()"
+                 [attr.points]="land.coords"
+                 (click)="takeLand(land)">
+        </polygon>
+    </svg>
+</div>
